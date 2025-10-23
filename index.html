@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>夏目漱石 内坪井旧居 利用サポート</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <span class="hero__kicker">熊本・内坪井旧居</span>
+        <h1>夏目漱石 内坪井旧居をもっと身近に</h1>
+        <p class="hero__lead">
+          魅力を発信し、旧居を利用したい方をサポートする高校生運営の非公式サイトです。
+        </p>
+        <a class="hero__button" href="#application">利用申請はこちら</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="about">
+        <h2>旧居の魅力</h2>
+        <p>
+          文豪・夏目漱石が青春時代を過ごした内坪井旧居は、文学史に触れられる貴重な文化財です。
+          静かな町並みの中に佇む旧居で、朗読会や小規模イベントなどを開催することができます。
+        </p>
+      </section>
+
+      <section class="section" id="guide">
+        <h2>利用の流れ</h2>
+        <ol class="timeline">
+          <li>フォームから催事情報を送信</li>
+          <li>文化財課から利用可否の連絡を受け取る</li>
+          <li>当日の鍵受け渡しと利用</li>
+        </ol>
+        <p class="note">
+          利用には文化財課の許可が必要です。当サイトでは申請メール送信をお手伝いします。
+        </p>
+      </section>
+
+      <section class="section" id="application">
+        <h2>利用申請フォーム</h2>
+        <p>
+          以下を入力すると、文化財課宛てに利用申請メールを送信します。実際のメール送付前に必ず内容をご確認ください。
+        </p>
+        <form id="application-form" novalidate>
+          <label>
+            催事名
+            <input type="text" name="title" required />
+          </label>
+          <label>
+            開催日時
+            <input type="text" name="datetime" placeholder="例: 2024年12月1日 13:00-15:00" required />
+          </label>
+          <label>
+            主催者名
+            <input type="text" name="host" required />
+          </label>
+          <label>
+            参加人数（目安）
+            <input type="number" name="participants" min="1" required />
+          </label>
+          <label>
+            返信用メールアドレス
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            当日連絡先（電話）
+            <input type="tel" name="phone" required />
+          </label>
+          <label>
+            備考
+            <textarea name="note" rows="4" placeholder="必要に応じて記載してください"></textarea>
+          </label>
+          <div class="form-actions">
+            <button type="submit">申請メールを送る</button>
+          </div>
+        </form>
+        <p id="form-status" role="status" aria-live="polite" class="status"></p>
+      </section>
+
+      <section class="section" id="faq">
+        <h2>よくある質問</h2>
+        <dl class="faq">
+          <div>
+            <dt>文化財課の連絡先はどこで確認できますか？</dt>
+            <dd>公式サイトまたは過去の連絡メールで最新情報をご確認ください。</dd>
+          </div>
+          <div>
+            <dt>送信した内容を修正したいときは？</dt>
+            <dd>
+              再度フォームから送信するか、文化財課へ直接メールで訂正内容をお伝えください。
+            </dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>高校生ボランティア運営 / 非公式サイト</p>
+      <p>このサイトは文化財課との窓口を簡単にするためのサポートサイトです。</p>
+    </footer>
+
+    <script src="./main.js" type="module"></script>
+  </body>
+</html>
