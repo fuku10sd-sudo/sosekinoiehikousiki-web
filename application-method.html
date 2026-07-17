@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>利用申請方法の確認 | 夏目漱石 内坪井旧居 利用サポート</title>
+    <title>利用相談方法の確認 | 夏目漱石 内坪井旧居 利用サポート</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,17 +14,11 @@
   </head>
   <body>
     <header class="hero">
-      <div class="hero__layout">
+      <div class="hero__layout hero__layout--single">
         <div class="hero__content">
-          <span class="hero__kicker">熊本・内坪井旧居</span>
-          <h1>利用申請方法の確認</h1>
-          <p class="hero__lead">入力した内容から、申請メールの下書きを作成しました。</p>
-          <a class="hero__button" href="./index.html#application">フォームに戻る</a>
-        </div>
-        <div class="hero__photo" aria-hidden="true">
-          <div class="hero__photo-frame">
-            <img src="./assets/20251129-hero.jpg" alt="夏目漱石 内坪井旧居の外観" loading="lazy" />
-          </div>
+          <h1>利用相談方法の確認</h1>
+          <p class="hero__lead">入力した内容から、相談メールの下書きを作成しました。</p>
+          <a class="hero__button" href="./application.html">フォームに戻る</a>
         </div>
       </div>
     </header>
@@ -36,9 +30,9 @@
           <div class="terms__body">
             <div class="send-methods">
               <div class="send-method">
-                <h3>メーラーを起動して一人で送る場合</h3>
+                <h3>メーラーを起動して自分で送る場合</h3>
                 <p>
-                  「コピーする」のボタンを押していただければ、それをペーストしメールで送信することで申請が完了します。「メーラーを起動する」を押していただくと文化財課のメールアドレスがすでに記入されたメールの下書きに飛ぶことができます。<br />
+                  「コピーする」のボタンを押していただければ、それをペーストしメールで送信することで相談が完了します。「メーラーを起動する」を押していただくと文化財課のメールアドレスがすでに記入されたメールの下書きに飛ぶことができます。<br />
                   文化財課のメールアドレス：soseki.utitsuboi@gmail.com
                 </p>
               </div>
@@ -48,15 +42,15 @@
               </div>
             </div>
             <p class="note note--send-method">
-              申請メールを送っていただいたあとは、文化財課の方と直接メールでのやり取りをお願い致します。
+              相談メールを送っていただいたあとは、文化財課の方と直接メールでのやり取りをお願い致します。
             </p>
           </div>
         </details>
       </section>
 
       <section class="section">
-        <h2>申請メール（コピー用）</h2>
-        <p class="note">この内容をコピーしてメールで送れば申請できます。</p>
+        <h2>相談メール（コピー用）</h2>
+        <p class="note">この内容をコピーしてメールで送れば相談できます。</p>
         <p id="open-hours-confirm" class="note" hidden></p>
         <form id="application-draft-form">
           <label>
@@ -71,7 +65,7 @@
             <button type="button" id="send-mail" class="button-primary">代理で送信する</button>
           </div>
           <p class="note">
-            利用規約とプライバシーポリシーを確認し、同意のうえ送信をお願い致します。送信内容は、運営者が確認後に送信されます。
+            利用規約とプライバシーポリシーを確認し、同意のうえ送信をお願い致します。代理で送信するを選択する場合、送信内容は、運営者が確認後に送信されます。
           </p>
         </form>
         <p id="copy-status" role="status" aria-live="polite" class="status"></p>
@@ -79,8 +73,6 @@
     </main>
 
     <footer class="footer">
-      <p>高校生ボランティア運営 / 非公式サイト</p>
-      <p>このサイトは文化財課との窓口を簡単にするためのサポートサイトです。</p>
     </footer>
 
     <script src="./application-method.js"></script>

@@ -103,6 +103,9 @@ if (!form || !statusEl) {
   const datetimeStartInput = form.querySelector('input[name="datetimeStart"]');
   const datetimeEndInput = form.querySelector('input[name="datetimeEnd"]');
   const openHoursStatusEl = form.querySelector('#open-hours-status');
+  const equipmentCarryInputs = form.querySelectorAll('input[name="equipmentCarry"]');
+  const equipmentCarryDetailsEl = form.querySelector('#equipment-carry-details');
+  const equipmentCarryDetailsInput = form.querySelector('textarea[name="equipmentCarryDetails"]');
 
   const updateOpenHoursStatus = () => {
     if (!openHoursStatusEl) return;
@@ -143,6 +146,13 @@ if (!form || !statusEl) {
 
     const datetimeStart = form.querySelector('input[name="datetimeStart"]')?.value ?? '';
     const datetimeEnd = form.querySelector('input[name="datetimeEnd"]')?.value ?? '';
+    const equipmentCarry = form.querySelector('input[name="equipmentCarry"]:checked')?.value ?? '';
+
+    if (equipmentCarry === '持ち込みあり' && equipmentCarryDetailsInput && !String(equipmentCarryDetailsInput.value || '').trim()) {
+      status.set('備品の持ち込み内容を入力してください。', 'error');
+      equipmentCarryDetailsInput.reportValidity?.();
+      return;
+    }
 
     if (!String(datetimeStart).trim() || !String(datetimeEnd).trim()) {
       status.set('開催日時（開始・終了）を入力してください。', 'error');

@@ -14,104 +14,112 @@
   </head>
   <body>
     <header class="hero">
-      <div class="hero__layout">
+      <nav class="top-tabs" aria-label="ページリンク">
+        <a class="top-tabs__tab" href="./application.html">利用相談フォーム</a>
+        <a class="top-tabs__tab" href="./scenes.html">活用シーン</a>
+      </nav>
+      <div class="hero__layout hero__layout--single">
         <div class="hero__content">
-          <span class="hero__kicker">熊本・内坪井旧居</span>
-          <h1>漱石の家、お借りします。</h1>
-          <p class="hero__lead">
-            魅力を発信し、旧居を利用したい方をサポートする高校生運営の非公式サイトです。
-          </p>
-          <a class="hero__button" href="#application">利用申請はこちら</a>
-        </div>
-        <div class="hero__photo" aria-hidden="true">
-          <div class="hero__photo-frame">
-            <img src="./assets/20251129-hero.jpg" alt="夏目漱石 内坪井旧居の外観" loading="lazy" />
-          </div>
+          <h1 class="visually-hidden">漱石の家、お借りします。</h1>
+          <img
+            class="hero__title-image"
+            src="./assets/表紙.png"
+            alt="漱石の家、お借りします。"
+            loading="lazy"
+          />
+          <a class="hero__button hero__button--large" href="./application.html">相談申請はこちら</a>
         </div>
       </div>
     </header>
 
     <main>
-      <section class="section" id="story">
-        <h2>このホームページを作ったきっかけ</h2>
-        <p>
-          学校で熊本市の文化財課の方からお話を聞く機会があり、そこで魅力的な文化財がたくさん熊本にあることを知りました。
-          もっとたくさんの人にこの魅力を知ってほしい、と思い、そこでまずは本好き、という縁から深く調べるようになった夏目漱石内坪井旧居のことを知ってもらおう、という目標でこのホームページを立ち上げました。
-        </p>
-        <p>
-          また、開発中に自らこの内坪井旧居で主催したイベント「Cafe漱石の時間」や「カメラと本とお茶の日」では、
-          約60名の参加者が菓子を楽しみながら交流し、庭園や旧居内を自由に見学する姿やカメラを片手に旧居を楽しむ姿を目の当たりにしました。中には旧居を活用したイベント運営に関心を寄せてくれた人もおり、
-          本ホームページの有用性を確信しました。この本ホームページを通じてより多くの旧居の利用に関心を持つ方々に届けたいと考えています。
-        </p>
+      <section class="section" id="variety">
+        <h2>このホームページの説明</h2>
+        <div class="benefits">
+          <ul class="benefit__titles">
+            <li>使用例、旧居の情報を紹介しています</li>
+            <li>相談の手続きを簡単にできるようサポートします</li>
+          </ul>
+        </div>
+        <div class="story__content">
+          <div class="story__media" aria-hidden="true">
+            <img src="./assets/easy-peasy_RRG4oLuGga-removebg-preview.png" alt="" loading="lazy" />
+          </div>
+          <p class="story__text">
+            夏目漱石内坪井旧居をもっとたくさんの人に知ってほしい。その入口としてイベントという形で人が集まることが一番の近道だと思い、ホームページを作ることにしました。
+          </p>
+        </div>
       </section>
 
       <section class="section" id="about">
         <h2>旧居の魅力</h2>
         <p>
           文豪・夏目漱石が過ごした内坪井旧居は、文学史に触れられる貴重な文化財です。
-          静かな町並みの中に佇む旧居で、朗読会や小規模イベントなどを開催することができます。
+          静かな町並みの中に佇む旧居は、夏目漱石の気配を近くで感じることができるすてきな場所です。
         </p>
       </section>
 
-      <section class="section" id="scenes">
-        <h2>おすすめの利用シーン</h2>
-        <p>
-          成人式の写真撮影から同窓会、イベントまで、さまざまなシーンで気軽にご利用いただけます。また、会場代が基本無料なうえに、休館日や閉館時間後なら入館料なしで借りることができます。
-        </p>
-        <p>
-          茶道部のお茶会会場に利用されたり、成人式の前撮りや、琴の演奏会、フォトスタンプラリー、本の交換会…さまざまな使われ方をしています。
-        </p>
-        <p class="note">
-          ※金銭のやり取りが発生するイベントなどの会場として利用される場合は、費用が発生します。現在、文化財課に確認しております。料金につきましては、内容が確定次第、本ホームページ等にてご案内いたします。
-        </p>
-      </section>
-
-      <section class="section" id="variety">
-        <h2>文学だけじゃない。多彩な顔を持つ漱石の家であなたの好きを表現しませんか？</h2>
-        <div class="benefits">
-          <div class="benefits__list">
-            <div class="benefit">
-              <h4>使用例、掘り出し物の情報を紹介しています</h4>
-              <p>
-                旧居を借りる際の注意点や活用例に加え、館長の方や文化財課の方から伺った、調べてもなかなか出てこない貴重な情報をまとめています。
-              </p>
+      <section class="photo-gallery" id="gallery">
+        <div class="photo-slider" data-slider aria-label="旧居の写真スライダー">
+          <button class="photo-slider__nav photo-slider__nav--prev" type="button" aria-label="前の写真">
+            ◀
+          </button>
+          <div class="photo-slider__track">
+            <div class="photo-slider__slide">
+              <img src="./assets/IMG_3022.jpg" alt="旧居写真 4" loading="lazy" />
             </div>
-            <div class="benefit">
-              <h4>借用の手続きはシンプルに</h4>
-              <p>
-                フォームに必要事項を入力するだけで、借用申請に必要な情報がすべてそろいます。また申請メールの本文をそのままコピーできるようにしています。
-              </p>
+            <div class="photo-slider__slide">
+              <img src="./assets/IMG_3021.jpg" alt="旧居写真 3" loading="lazy" />
             </div>
-            <div class="benefit">
-              <h4>本サイトの利用者にとって安心・快適にご利用いただくための配慮</h4>
-              <p>
-                本サイトには投稿機能および文化財課への利用申請フォームを設けており、投稿内容・申請内容を受け取る方々に配慮した運営を行うため、投稿および申請内容は、いずれも運営者が事前に内容を確認したうえで掲載・送信するという体制にしております。
-              </p>
+            <div class="photo-slider__slide">
+              <img src="./assets/IMG_3018.jpg" alt="旧居写真 1" loading="lazy" />
+            </div>
+            <div class="photo-slider__slide">
+              <img src="./assets/IMG_3020.jpg" alt="旧居写真 2" loading="lazy" />
+            </div>
+            <div class="photo-slider__slide">
+              <img src="./assets/IMG_3023.jpg" alt="旧居写真 5" loading="lazy" />
+            </div>
+            <div class="photo-slider__slide">
+              <img src="./assets/IMG_3024.jpg" alt="旧居写真 6" loading="lazy" />
+            </div>
+            <div class="photo-slider__slide">
+              <img src="./assets/旧居写真.jpg" alt="旧居写真 7" loading="lazy" />
+            </div>
+            <div class="photo-slider__slide">
+              <img src="./assets/旧居写真２.jpg" alt="旧居写真 8" loading="lazy" />
             </div>
           </div>
+          <button class="photo-slider__nav photo-slider__nav--next" type="button" aria-label="次の写真">
+            ▶
+          </button>
         </div>
       </section>
 
-      <section class="section" id="guide">
-        <h2>利用の流れ</h2>
-        <ol class="timeline">
-          <li>
-            フォームで文化財課に送る文面の下書きを作る。（旧居を利用するためには文化財課の許可が必要です。）
-          </li>
-          <li>
-            申請方法を確認するを押し、自分で申請するか、代理申請にするか決める。
-          </li>
-          <li>文化財課から利用可否の連絡を受け取る</li>
-        </ol>
-        <p class="note">
-          利用には文化財課の許可が必要です。当サイトでは申請メールの下書き作成をお手伝いします。
-        </p>
+      <section class="section" id="info">
+        <h2>旧居情報</h2>
+        <table class="info-table">
+          <tbody>
+            <tr>
+              <th>所在地</th>
+              <td>〒860-0077　熊本市中央区内坪井町4-22</td>
+            </tr>
+            <tr>
+              <th>開館時間</th>
+              <td>9時30分から16時30分</td>
+            </tr>
+            <tr>
+              <th>定休日</th>
+              <td>月曜日（祝日の場合は翌日）</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
 
       <section class="section" id="availability-calendar">
-        <h2>旧居空き日カレンダー</h2>
+        <h2>旧居カレンダー</h2>
         <p>
-          空き状況は運営者が更新します。表示は目安としてご覧ください。
+          イベント状況は運営者が更新します。表示は目安としてご覧ください。
         </p>
         <div class="calendar">
           <div class="calendar__header">
@@ -148,123 +156,42 @@
           </summary>
           <div class="terms__body">
             <p>
-              こちらのメールアドレス（<a href="mailto:soseki.utitsuboi@gmail.com">soseki.utitsuboi@gmail.com</a>）にイベント名、主催者名・内容をご記入の上、送信してください。
+              こちらのメールアドレス（<a href="mailto:soseki.utitsuboi@gmail.com">soseki.utitsuboi@gmail.com</a>）にイベント名、相談者名・内容をご記入の上、送信してください。
               （もし宣伝した内容を削除したい場合は、ご連絡ください。対応いたします。）
             </p>
           </div>
         </details>
       </section>
 
-      <section class="section" id="caution">
-        <h2>注意点</h2>
-        <ul class="caution-list">
-          <li>・定休日は月曜（祝日の場合は翌日）</li>
-          <li>・開館時間は9時30分から16時30分</li>
-          <li>・火気厳禁</li>
-          <li>・旧居を汚す恐れがあるものはご遠慮ください</li>
-          <li>・冬はとても冷え、夏は大変暑いです</li>
-          <li>・旧居の収容人数は一度に最大30人程度です</li>
-          <li>
-            ・開館時間内にご利用される場合、イベント参加者以外の旧居を観覧される方へ入館を制限することはできません
-          </li>
-        </ul>
-      </section>
-
-      <section class="section" id="application">
-        <h2>利用申請フォーム</h2>
-        <p>以下を入力すると、申請メールの下書きを作成します。</p>
-        <form id="application-form" novalidate>
-          <label>
-            催事名
-            <input type="text" name="title" required />
-          </label>
-          <label>
-            開催日時（開始）
-            <input type="datetime-local" name="datetimeStart" required />
-          </label>
-          <label>
-            開催日時（終了）
-            <input type="datetime-local" name="datetimeEnd" required />
-          </label>
-          <p id="open-hours-status" role="status" aria-live="polite" class="status status--info"></p>
-          <input type="hidden" name="datetime" />
-          <label>
-            主催者名
-            <input type="text" name="host" required />
-          </label>
-          <label>
-            参加人数（目安）
-            <input type="number" name="participants" min="1" required />
-          </label>
-          <label>
-            返信用メールアドレス
-            <input
-              type="email"
-              name="email"
-              inputmode="email"
-              autocomplete="email"
-              spellcheck="false"
-              autocapitalize="off"
-              placeholder="example@example.com"
-              required
-            />
-          </label>
-          <label>
-            当日連絡先（電話）
-            <input type="tel" name="phone" required />
-          </label>
-          <label>
-            備考
-            <textarea name="note" rows="4" placeholder="必要に応じて記載してください"></textarea>
-          </label>
-          <div class="form-actions">
-            <button type="submit">申請方法を確認する</button>
-          </div>
-        </form>
-        <p id="form-status" role="status" aria-live="polite" class="status"></p>
-      </section>
-
-      <section class="section" id="info">
-        <h2>旧居情報</h2>
-        <table class="info-table">
-          <tbody>
-            <tr>
-              <th>所在地</th>
-              <td>〒860-0077　熊本市中央区内坪井町4-22</td>
-            </tr>
-            <tr>
-              <th>開館時間</th>
-              <td>9時30分から16時30分</td>
-            </tr>
-            <tr>
-              <th>定休日</th>
-              <td>月曜日（祝日の場合は翌日）</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <section class="section" id="faq">
-        <h2>よくある質問</h2>
-        <dl class="faq">
-          <div>
-            <dt>文化財課の連絡先はどこで確認できますか？</dt>
-            <dd>公式サイトまたは過去の連絡メールで最新情報をご確認ください。</dd>
-          </div>
-          <div>
-            <dt>送信した内容を修正したいときは？</dt>
-            <dd>
-              再度フォームから送信するか、文化財課へ直接メールで訂正内容をお伝えください。
-            </dd>
-          </div>
-          <div>
-            <dt>熊本市や施設から許可をもらって作ったサイトなのでしょうか？</dt>
-            <dd>本ホームページは、旧居を管理する文化財課および館長の許可を得て作成しております。</dd>
-          </div>
-        </dl>
-      </section>
-
       <section class="section" id="terms">
+        <details class="terms terms--faq">
+          <summary>よくある質問</summary>
+          <div class="terms__body">
+            <dl class="faq">
+              <div>
+                <dt>文化財課の連絡先はどこで確認できますか？</dt>
+                <dd>こちらのメールアドレスからご確認ください。アドレス：bunkazai@city.kumamoto.lg.jp</dd>
+              </div>
+              <div>
+                <dt>送信した内容を修正したいときは？</dt>
+                <dd>
+                  再度フォームから送信するか、文化財課へ直接メールで訂正内容をお伝えください。
+                </dd>
+              </div>
+              <div>
+                <dt>熊本市や施設から許可をもらって作ったサイトなのでしょうか？</dt>
+                <dd>本ホームページは、旧居を管理する文化財課および館長の許可を得て作成しております。</dd>
+              </div>
+              <div>
+                <dt>本サイトの利用者にとって安心・快適にご利用いただくための配慮</dt>
+                <dd>
+                  本サイトには投稿機能および文化財課への利用相談フォームを設けており、投稿内容・申請内容を受け取る方々に配慮した運営を行うため、投稿および申請内容は、いずれも運営者が事前に内容を確認したうえで掲載・送信するという体制にしております。
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </details>
+
         <details class="terms">
           <summary>利用規約</summary>
           <div class="terms__body">
@@ -412,8 +339,6 @@
     </main>
 
     <footer class="footer">
-      <p>高校生ボランティア運営 / 非公式サイト</p>
-      <p>このサイトは文化財課との窓口を簡単にするためのサポートサイトです。</p>
     </footer>
 
     <script src="./main.js"></script>

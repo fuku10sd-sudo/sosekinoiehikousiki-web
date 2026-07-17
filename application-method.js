@@ -3,6 +3,10 @@ const RECIPIENT_EMAIL = 'soseki.utitsuboi@gmail.com';
 // Google Apps Script のデプロイURL
 const GAS_ENDPOINT =
   'https://script.google.com/macros/s/AKfycbwzMzh-FZMHDiuEjylpceRCS5b_ggyyTy4UPxwyoUGvJb-TGTiIg_oh6Vy-leaoMXoOZg/exec';
+const FLOOR_PLAN_PATH = './assets/新・間取り図.png';
+const FLOOR_PLAN_FILENAME = '新・間取り図.png';
+const FLOOR_PLAN_SHARE_URL =
+  'https://drive.google.com/file/d/1Hc0KB0sbp53dpiQvoFU4w5-aF5n3jBrn/view?usp=sharing';
 
 const draftEl = document.querySelector('#application-draft');
 const copyButton = document.querySelector('#copy-draft');
@@ -81,7 +85,7 @@ function updateOpenHoursConfirm(data) {
   const startValue = data?.datetimeStart ?? '';
   const endValue = data?.datetimeEnd ?? '';
   if (isWithinOpenHours(startValue, endValue)) {
-    openHoursConfirmEl.textContent = '開館時間中に申請されています。よろしいですか？';
+    openHoursConfirmEl.textContent = '開館時間中の相談内容です。よろしいですか？';
     openHoursConfirmEl.hidden = false;
   } else {
     openHoursConfirmEl.textContent = '';
@@ -99,9 +103,24 @@ function getDraftData() {
   }
 }
 
+function getFloorPlanUrl() {
+  try {
+    return new URL(FLOOR_PLAN_PATH, window.location.href).toString();
+  } catch {
+    return FLOOR_PLAN_PATH;
+  }
+}
+
 function formatDraft(data) {
   const title = String(data.title || '').trim();
+  const purpose = String(data.purpose || '').trim();
   const datetime = String(data.datetime || '').trim();
+  const room = String(data.room || '').trim();
+  const paidBusiness = String(data.paidBusiness || '').trim();
+  const equipmentCarry = String(data.equipmentCarry || '').trim();
+  const equipmentCarryDetails = String(data.equipmentCarryDetails || '').trim();
+  const agreeConsideration = String(data.agreeConsideration || '').trim();
+  const agreeAdmissionFee = String(data.agreeAdmissionFee || '').trim();
   const host = String(data.host || '').trim();
   const participants = data.participants === 0 ? '0' : String(data.participants || '').trim();
   const email = String(data.email || '').trim();
@@ -109,20 +128,28 @@ function formatDraft(data) {
   const note = String(data.note || '').trim();
 
   const subjectTitle = title ? title : '（催事名未入力）';
-  const subject = `【内坪井旧居 利用申請】${subjectTitle}`;
+  const subject = `【夏目漱石内坪井旧居 利用相談】${subjectTitle}`;
 
   const bodyLines = [
     '熊本市文化財課 ご担当者様',
     '',
-    '内坪井旧居の利用について、下記の内容で申請いたします。',
+    '内坪井旧居の利用について、下記の内容で相談いたします。',
     '',
     `【催事名】${title || '（未入力）'}`,
+    `【催事の主旨及び使用目的】${purpose || '（未入力）'}`,
     `【開催日時】${datetime || '（未入力）'}`,
-    `【主催者名】${host || '（未入力）'}`,
+    `【利用する部屋】${room || '（未入力）'}`,
+    `【有料事業か否か】${paidBusiness || '（未入力）'}`,
+    `【備品の持ち込みはあるか】${equipmentCarry || '（未入力）'}`,
+    `【備品の持ち込み内容】${equipmentCarry === '持ち込みあり' ? equipmentCarryDetails || '（未入力）' : '（持ち込みなしのため記載なし）'}`,
+    `【相談者名】${host || '（未入力）'}`,
     `【参加人数（目安）】${participants || '（未入力）'}`,
     `【返信用メールアドレス】${email || '（未入力）'}`,
-    `【当日連絡先（電話）】${phone || '（未入力）'}`,
+    `【返信用電話番号】${phone || '（未入力）'}`,
+    `【一般観覧者へ配慮をする旨に同意する】${agreeConsideration || '未同意'}`,
+    `【開館時間内では入館料が必要である旨に同意する】${agreeAdmissionFee || '未同意'}`,
     `【備考】${note || '（なし）'}`,
+    `【添付】${FLOOR_PLAN_SHARE_URL}`,
     '',
     '以上、よろしくお願いいたします。'
   ];
@@ -156,7 +183,7 @@ if (!draftEl || !copyButton || !openMailerButton || !sendMailButton) {
   status.set('表示に失敗しました。ページを再読み込みしてください。', 'error');
 } else if (!data) {
   draftEl.value =
-    'フォーム入力内容が見つかりませんでした。\n\n「フォームに戻る」から入力し直して、もう一度「申請方法を確認する」を押してください。';
+    'フォーム入力内容が見つかりませんでした。\n\n「フォームに戻る」から入力し直して、もう一度「相談方法を確認する」を押してください。';
   copyButton.disabled = true;
   openMailerButton.disabled = true;
   sendMailButton.disabled = true;
@@ -182,10 +209,15 @@ if (!draftEl || !copyButton || !openMailerButton || !sendMailButton) {
     status.set('送信中です。少しお待ちください…');
 
     try {
+      const payload = {
+        ...data,
+        floorPlanUrl: getFloorPlanUrl(),
+        floorPlanFilename: FLOOR_PLAN_FILENAME
+      };
       const res = await fetch(GAS_ENDPOINT, {
         method: 'POST',
         // application/json を指定するとプリフライトが走るため付けない
-        body: JSON.stringify(data)
+        body: JSON.stringify(payload)
       });
 
       const rawText = await res.text();
@@ -197,7 +229,7 @@ if (!draftEl || !copyButton || !openMailerButton || !sendMailButton) {
       }
 
       if (response.ok) {
-        status.set('申請メールを送信しました。文化財課からの返信をお待ちください。', 'success');
+        status.set('相談メールを送信しました。文化財課からの返信をお待ちください。', 'success');
         sessionStorage.removeItem(STORAGE_KEY);
       } else {
         const code = response.error || 'unknown_error';
