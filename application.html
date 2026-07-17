@@ -1,1 +1,211 @@
-web/application.html
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>利用相談フォーム | 夏目漱石 内坪井旧居 利用サポート</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__layout hero__layout--single">
+        <div class="hero__content">
+          <h1>利用相談フォーム</h1>
+          <p class="hero__lead">必要事項を入力すると、相談メールの下書きを作成します。</p>
+          <a class="hero__button" href="./index.html">トップへ戻る</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="guide">
+        <h2>利用の流れ</h2>
+        <ol class="steps">
+          <li>フォームに入力し、文化財課への相談メールを送る</li>
+          <li>メールで相談のやり取りをする</li>
+          <li>お互い了承できたら申請する</li>
+        </ol>
+      </section>
+
+      <section class="section" id="application">
+        <h2>利用相談フォーム</h2>
+        <p>以下を入力すると、相談メールの下書きを作成します。</p>
+        <form id="application-form">
+          <label>
+            催事名
+            <input type="text" name="title" required />
+          </label>
+          <label>
+            催事の主旨及び使用目的
+            <textarea name="purpose" rows="3" required></textarea>
+          </label>
+          <label>
+            開催日時（開始）
+            <input type="datetime-local" name="datetimeStart" required />
+          </label>
+          <label>
+            開催日時（終了）
+            <input type="datetime-local" name="datetimeEnd" required />
+          </label>
+          <p id="open-hours-status" role="status" aria-live="polite" class="status status--info"></p>
+          <input type="hidden" name="datetime" />
+          <label>
+            参加人数（目安）
+            <input type="number" name="participants" min="1" required />
+          </label>
+          <label>
+            利用する部屋（間取り図に記載している番号で記入ください。）
+            <input type="text" name="room" required />
+          </label>
+          <div class="radio-group">
+            <span class="radio-group__label">有料事業か否か</span>
+            <div class="radio-group__options">
+              <label class="radio-option">
+                <input type="radio" name="paidBusiness" value="有料事業" required />
+                有料事業
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="paidBusiness" value="有料事業ではない" />
+                有料事業ではない
+              </label>
+            </div>
+          </div>
+          <div class="radio-group">
+            <span class="radio-group__label">備品の持ち込みはあるか</span>
+            <div class="radio-group__options">
+              <label class="radio-option">
+                <input type="radio" name="equipmentCarry" value="持ち込みあり" required />
+                持ち込みあり
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="equipmentCarry" value="持ち込みなし" />
+                持ち込みなし
+              </label>
+            </div>
+          </div>
+          <div id="equipment-carry-details" hidden>
+            <label>
+              持ち込みする備品の内容
+              <textarea
+                name="equipmentCarryDetails"
+                rows="3"
+                placeholder="例：プロジェクター、音響機材、テーブルなど"
+              ></textarea>
+            </label>
+          </div>
+          <label>
+            相談者名
+            <input type="text" name="host" required />
+          </label>
+          <label>
+            返信用メールアドレス
+            <input
+              type="email"
+              name="email"
+              inputmode="email"
+              autocomplete="email"
+              spellcheck="false"
+              autocapitalize="off"
+              placeholder="example@example.com"
+              required
+            />
+          </label>
+          <label>
+            電話番号（返信用）
+            <input
+              type="tel"
+              name="phone"
+              inputmode="tel"
+              placeholder="090-1234-5678"
+            />
+          </label>
+          <label>
+            備考
+            <textarea name="note" rows="4" placeholder="必要に応じて記載してください"></textarea>
+          </label>
+          <div class="checkbox-group">
+            <span class="checkbox-group__label">同意事項</span>
+            <label class="checkbox-option">
+              <input type="checkbox" name="agreeConsideration" value="同意する" required />
+              一般観覧者へ配慮をする旨に同意する
+            </label>
+            <label class="checkbox-option">
+              <input type="checkbox" name="agreeAdmissionFee" value="同意する" required />
+              開館時間内では入館料が必要である旨に同意する
+            </label>
+          </div>
+          <div class="form-actions">
+            <button type="submit">相談方法を確認する</button>
+          </div>
+        </form>
+        <p id="form-status" role="status" aria-live="polite" class="status"></p>
+      </section>
+
+      <section class="section" id="floor-plan">
+        <details class="terms">
+          <summary>間取り図</summary>
+          <div class="terms__body">
+            <div class="pdf-embed pdf-embed--zoom">
+              <input class="pdf-embed__toggle" type="checkbox" id="floorplan-zoom" />
+              <input
+                class="pdf-embed__zoom"
+                type="radio"
+                name="floorplan-zoom-level"
+                id="floorplan-zoom-120"
+                checked
+              />
+              <input class="pdf-embed__zoom" type="radio" name="floorplan-zoom-level" id="floorplan-zoom-150" />
+              <input class="pdf-embed__zoom" type="radio" name="floorplan-zoom-level" id="floorplan-zoom-180" />
+              <div class="pdf-embed__controls" role="group" aria-label="拡大率">
+                <span class="pdf-embed__controls-label">拡大率</span>
+                <label class="pdf-embed__zoom-label" for="floorplan-zoom-120">120%</label>
+                <label class="pdf-embed__zoom-label" for="floorplan-zoom-150">150%</label>
+                <label class="pdf-embed__zoom-label" for="floorplan-zoom-180">180%</label>
+              </div>
+              <label class="pdf-embed__thumb" for="floorplan-zoom" role="button">
+                <img class="pdf-embed__viewer" src="./assets/新・間取り図.png" alt="間取り図" loading="lazy" />
+                <span class="pdf-embed__hint">クリックで拡大</span>
+              </label>
+              <label class="pdf-embed__overlay" for="floorplan-zoom" aria-hidden="true">
+                <img
+                  class="pdf-embed__viewer pdf-embed__viewer--zoom"
+                  src="./assets/新・間取り図.png"
+                  alt="間取り図（拡大）"
+                  loading="lazy"
+                />
+              </label>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="caution">
+        <h2>注意点</h2>
+        <ul class="caution-list">
+          <li>・定休日は月曜（祝日の場合は翌日）</li>
+          <li>
+            ・開館時間は9時30分から16時30分（原則開館日のイベント開催をお願いしたいです。準備・片付け等を含めて開館時間であることが望ましいです。）
+          </li>
+          <li>・火気厳禁</li>
+          <li>・旧居を汚す恐れがあるものはご遠慮ください</li>
+          <li>・旧居はエアコンを設置することが難しいためご留意ください</li>
+          <li>・旧居の収容人数は一度に最大30人程度です</li>
+          <li>
+            ・開館時間内にご利用される場合、イベント参加者以外の旧居を観覧される方へ入館を制限することはできません
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+    </footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
