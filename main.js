@@ -346,3 +346,19 @@ if (calendarSection) {
     renderCalendar();
   }
 }
+
+document.querySelectorAll('[data-slider]').forEach((slider) => {
+  const track = slider.querySelector('.photo-slider__track');
+  const prevButton = slider.querySelector('.photo-slider__nav--prev');
+  const nextButton = slider.querySelector('.photo-slider__nav--next');
+
+  if (!track) return;
+
+  const scrollByAmount = (direction) => {
+    const amount = Math.max(track.clientWidth * 0.85, 280);
+    track.scrollBy({ left: direction * amount, behavior: 'smooth' });
+  };
+
+  prevButton?.addEventListener('click', () => scrollByAmount(-1));
+  nextButton?.addEventListener('click', () => scrollByAmount(1));
+});
